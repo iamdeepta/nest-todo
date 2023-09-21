@@ -1,14 +1,11 @@
 import * as mongoose from 'mongoose';
-import { ConfigService } from '@nestjs/config';
-import { Inject } from '@nestjs/common';
-
-@Inject()
-
 
 export const databaseProviders = [
   {
     provide: 'DATABASE_CONNECTION',
     useFactory: async (): Promise<typeof mongoose> =>
-      await mongoose.connect('mongodb://localhost/test'),
+      await mongoose.connect(
+        'mongodb+srv://icinemamongo:icinemamongo@cluster0.2tstg.mongodb.net/test-nest?retryWrites=true&w=majority',
+      ),
   },
 ];
